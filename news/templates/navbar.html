@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <nav class="navbar" style="background-color: #6FA23F;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-lg-2" style="text-align: center;">
+                        <div class="header" >
+                            <a class="navbar-brand" href="{% url 'newsToday' %}"><img src="https://moringaschool.com/static/img/main-logo.png" style="height: 60px; width: 140px; "></a>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col-md-5 col-lg-5" style="text-align: center; ">
+                         <!-- Adding a search form -->
+                        <form class="navbar-form" role="search" action="{% url 'search_results' %}" style="width:500px; padding-top: 10px;">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Article" name="article">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">search</button>                                
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col-md-4 col-lg-4" style="text-align: center;">
+                        {% if user.is_authenticated %}                        
+                        <div class="dropdown" style="padding-left: 20px;">
+                            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="color: white;">Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{%url 'newsToday'%}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{%url 'new-article'%}">Create Article</a>
+                                </li>
+                                <li>
+                                    <a href="/accounts/password/change">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>                        
+                        {% else %}
+                        <ul>
+                            <li style="display: inline-block;">
+                                <a class="btn btn-default" href="/accounts/login" style="color: white;">Login</a>
+                            </li>
+                            <li style="display: inline-block;">
+                                <a class="btn btn-default" href="/accounts/register" style="color: white;">Sign Up</a>
+                            </li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>                       
+        </nav>
+    </body>
+</html> 
